@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Background Remover</title>
+
+    <!-- Style of My Website-->
+
+    <style>
+        h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        img {
+            max-height: 500px;
+            border: 1px solid black;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Background Remover</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Upload and Remove Background">
+    </form>
+
+    {% if original_image and modified_image %}
+    <div class="images-container">
+        <div class="image-container">
+            <h2>Original Image</h2>
+            <img src="{{ original_image }}">
+        </div>
+        <div class="image-container">
+            <h2>Modified Image</h2>
+            <img src="{{ modified_image }}">
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>
